@@ -1,6 +1,7 @@
 package com.game.model;
 
 import java.awt.Color;
+import org.lwjgl.opengl.Display;
 
 public abstract class GameObjectModel {
     private float x,y,height,width,angle;
@@ -22,6 +23,14 @@ public abstract class GameObjectModel {
 
     public float getWidth() {
         return width;
+    }
+
+    public float getHalfHeight() {
+        return height / 2;
+    }
+
+    public float getHalfWidth() {
+        return width / 2;
     }
 
     public float getAngle() {

@@ -8,8 +8,9 @@ public class Game {
     private Tank tank;
     public Game() {
         objects = new ArrayList<>();
-        tank = new Tank(300, 300, 50, 100, Color.BLUE, 0);
+        tank = new Tank(400, 100, 50, 25, Color.BLUE, 0);
         objects.add(tank);
+        
     }
     public void getInput() {
         tank.getInput();
@@ -23,5 +24,6 @@ public class Game {
         for (GameObject object : objects) {
             object.render();
         }
+        
     }
 }

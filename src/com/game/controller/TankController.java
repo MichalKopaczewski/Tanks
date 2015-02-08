@@ -28,6 +28,10 @@ public class TankController extends GameObjectController {
             model.stop();
             model.moveBottom();
             model.moveRight();
+        } else if (Keyboard.isKeyDown(Keyboard.KEY_DOWN) && Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+            model.stop();
+        } else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT) && Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
+            model.stop();
         } else if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
             model.stop();
             model.moveTop();
