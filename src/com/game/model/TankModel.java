@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import org.lwjgl.opengl.Display;
 
 public class TankModel extends GameObjectModel {
-    public static final float MAX_SPEED = 10;
-    public static final float MAX_X_AREA = Display.getWidth(), MAX_Y_AREA = Display.getHeight(), MIN_X_AREA = 0, MIN_Y_AREA = 0;
+    public static final float MAX_SPEED = 5;
+    public static final float MAX_X_AREA = Display.getWidth(), MAX_Y_AREA = Display.getHeight() / 2, MIN_X_AREA = 0, MIN_Y_AREA = 0;
     private float xSpeed,ySpeed;
     public ArrayList<Bullet> bullets;
     public TankModel(float x, float y, float height, float width, Color color, float angle) {
@@ -19,7 +19,6 @@ public class TankModel extends GameObjectModel {
         this.xSpeed = 0;
         this.ySpeed = 0;
         bullets = new ArrayList<>();
-        bullets.add(new Bullet(this));
         
     }
     
@@ -33,13 +32,23 @@ public class TankModel extends GameObjectModel {
             }
         }
         updateBullets();
+        checkBullets();
+    }
+    public void addBullet() {
+        bullets.add(new Bullet(this));
     }
     public void updateBullets() {
         for (Bullet object : bullets) {
             object.update();
         }
     }
-    
+    public void checkBullets() {
+        for (int i = bullets.size()-1; i >= 0; i --) {
+            if (bullets.get(i).getModel().isIsOverArea()) {
+                bullets.remove(i);
+            }
+        }
+    }
     public void keepInArea() {
         if (round(getX() + getHalfWidth()) == MAX_X_AREA) {
             stopX();

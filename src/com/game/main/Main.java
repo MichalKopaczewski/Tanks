@@ -23,7 +23,7 @@ public class Main {
             Display.create();
             Display.setVSyncEnabled(true);
             Keyboard.create();
-            Display.setTitle("WSAD + strzalki sterownie");
+            Display.setTitle("strzalki + spacja");
         } catch (LWJGLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
